@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-f', 'Dockerfile.builder',  '--cache-from', 'gcr.io/$PROJECT_ID/$REPO_NAME:builder', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:builder', '.']
+  args: ['build','-f', 'Dockerfile',  '--cache-from', 'gcr.io/$PROJECT_ID/$REPO_NAME:builder', '--target', 'builder', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:builder', '.']
 - name: 'docker/compose:1.19.0'
   env:
   - 'PROJECT_ID=$PROJECT_ID'

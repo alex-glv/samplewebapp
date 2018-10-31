@@ -3,8 +3,9 @@ services:
   test:
     image: "gcr.io/${PROJECT_ID}/${REPO_NAME}:builder"
     build:
+      args: [target, builder, cache-from, "gcr.io/${PROJECT_ID}/${REPO_NAME}:builder"]
       context: .
-      dockerfile: Dockerfile.builder
+      dockerfile: Dockerfile
     entrypoint: >
       go test ./...
 
